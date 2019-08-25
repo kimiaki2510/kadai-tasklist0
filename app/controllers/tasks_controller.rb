@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
-    def index
+        def index
         @tasks = Task.all
-    end
-    
-    def show
-        @task = Task.find(params[:id])
     end
     
     def new
@@ -47,10 +43,14 @@ class TasksController < ApplicationController
         redirect_to tasks_url
     end
     
+    def show
+        @task = Task.find(params[:id])
+    end
+    
     private
     
     def task_params
         params.require(:task).permit(:content)
     end
-    
+
 end
